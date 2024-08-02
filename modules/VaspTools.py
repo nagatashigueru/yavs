@@ -6,41 +6,59 @@
 
 import os
 
+# ------------------------------------------------------------------------------
+# Funciones para generar cada archivo
+# INCAR - POSCAR - KPOINTS - POTCAR
+# ------------------------------------------------------------------------------
+
+def INCARCreate(ICName):
+    INCAR = open(ICName, "x")
+    INCAR.close()
+
+def KPOINTSCreate(KCName):
+    KPOINTS = open(KCName, "x")
+    KPOINTS.close()
+
+def POSCARCreate(PSCName):
+    POSCAR = open(PSCName, "x")
+    POSCAR.close()
+
+def POTCARCreate(PTCName):
+    POTCAR = open(PTCName, "x")
+    POTCAR.close()
+
+
+# ------------------------------------------------------------------------------
+# Funciones para generar la estructura basica de la carpeta
+# INCAR - POSCAR - KPOINTS - POTCAR
+# correspondiente a cada caso de simulacion
+# ------------------------------------------------------------------------------
+
 def VTBasic(VTBPath):
 
     PathDir = "./" + VTBPath
     
     os.mkdir(PathDir)
     os.chdir(PathDir)
+
+    INCARCreate("INCAR")
+    KPOINTSCreate("KPOINTS")
+    POSCARCreate("POSCAR")
+    POTCARCreate("POTCAR")
     
-    INCAR = open("INCAR","x")
-    KPOINTS = open("KPOINTS","x")
-    POSCAR = open("POSCAR","x")
-    POTCAR = open("POTCAR","x")
-
-    INCAR.close()
-    KPOINTS.close()
-    POSCAR.close()
-    POTCAR.close()
-
 def VTBandsDos(VTBDPath):
     
     PathDir = "./" + VTBDPath
     
     os.mkdir(PathDir)
     os.chdir(PathDir)
+
+    POSCARCreate("POSCAR")
+    POTCARCreate("POTCAR")
+
+    INCARCreate("INCAR-1")
+    INCARCreate("INCAR-2")
+
+    KPOINTSCreate("KPOINTS-1")
+    KPOINTSCreate("KPOINTS-2")
     
-    INCAR_1 = open("INCAR-1","x")
-    KPOINTS_1 = open("KPOINTS-1","x")
-    INCAR_2 = open("INCAR-2","x")
-    KPOINTS_2 = open("KPOINTS-2","x")
-    POSCAR = open("POSCAR","x")
-    POTCAR = open("POTCAR","x")
-
-    INCAR_1.close()
-    KPOINTS_1.close()
-    INCAR_2.close()
-    KPOINTS_2.close()
-    POSCAR.close()
-    POTCAR.close()
-
